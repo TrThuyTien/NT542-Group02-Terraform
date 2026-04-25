@@ -21,3 +21,13 @@ variable "private_data_subnets" {
 variable "azs" {
   default = ["us-east-1a", "us-east-1b"]
 }
+
+variable "key_name" {
+  type = string
+}
+
+variable "ami_id" {
+  type        = string
+  description = "Ubuntu Server 22.04 LTS (HVM),EBS General Purpose (SSD) Volume Type."
+  default     = "ami-04680790a315cd58d"
+}
