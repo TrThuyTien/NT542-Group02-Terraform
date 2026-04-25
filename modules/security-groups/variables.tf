@@ -8,3 +8,9 @@ variable "allowed_ssh_cidr" {
   type        = string
   default     = "0.0.0.0/0"  # hoặc IP của bạn (an toàn hơn)
 }
+
+variable "alb_sg" {
+  description = "ALB Security Group (optional)"
+  type        = string
+  default     = null
+}
