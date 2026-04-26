@@ -31,3 +31,16 @@ variable "ami_id" {
   description = "Ubuntu Server 22.04 LTS (HVM),EBS General Purpose (SSD) Volume Type."
   default     = "ami-04680790a315cd58d"
 }
+
+variable "alb_name" {
+  default = "wordpress-alb"
+}
+
+variable "asg_name" {
+  default = "wordpress-asg"
+}
+
+variable "instance_type" {
+  description = "EC2 instance type"
+  type        = string
+}
