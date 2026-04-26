@@ -31,3 +31,21 @@ variable "ami_id" {
   description = "Ubuntu Server 22.04 LTS (HVM),EBS General Purpose (SSD) Volume Type."
   default     = "ami-04680790a315cd58d"
 }
+
+variable "db_name" {
+  description = "Tên database"
+  type        = string
+  default     = "wordpressdb"
+}
+
+variable "db_username" {
+  description = "Tên đăng nhập database"
+  type        = string
+  default     = "admin"
+}
+
+variable "db_password" {
+  description = "Mật khẩu database"
+  type        = string
+  sensitive   = true
+}
