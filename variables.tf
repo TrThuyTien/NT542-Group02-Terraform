@@ -43,4 +43,20 @@ variable "asg_name" {
 variable "instance_type" {
   description = "EC2 instance type"
   type        = string
+variable "db_name" {
+  description = "Tên database"
+  type        = string
+  default     = "wordpressdb"
+}
+
+variable "db_username" {
+  description = "Tên đăng nhập database"
+  type        = string
+  default     = "admin"
+}
+
+variable "db_password" {
+  description = "Mật khẩu database"
+  type        = string
+  sensitive   = true
 }
