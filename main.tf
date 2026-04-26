@@ -44,3 +44,20 @@ module "wordpress_web_master" {
   key_name         = var.key_name
   efs_dns          = module.efs.efs_dns
 }
+
+module "rds_aurora" {
+  depends_on              = [module.vpc, module.security_groups]
+  source                  = "./modules/rds-aurora"
+  private_data_subnet_ids = module.vpc.private_data_subnets
+  db_security_group_id    = module.security_groups.db_sg
+  db_name                 = var.db_name
+  db_username             = var.db_username
+  db_password             = var.db_password
+}
+
+module "elasticache_redis" {
+  depends_on              = [module.vpc, module.security_groups]
+  source                  = "./modules/elasticache-redis"
+  private_data_subnet_ids = module.vpc.private_data_subnets
+  redis_security_group_id = module.security_groups.redis_sg
+}

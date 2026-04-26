@@ -37,3 +37,11 @@ output "wordpress_web_master_public_ip" {
 output "efs_dns" {
   value = module.efs.efs_dns
 }
+
+output "rds_endpoint" {
+  value = module.rds_aurora.rds_endpoint
+}
+
+output "redis_endpoint" {
+  value = module.elasticache_redis.redis_endpoint
+}
