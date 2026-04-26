@@ -21,3 +21,7 @@ output "efs_sg" {
 output "sg_web_public" {
   value = aws_security_group.web_public_sg.id
 }
+
+output "alb_sg" {
+  value = aws_security_group.alb_sg.id
+}
