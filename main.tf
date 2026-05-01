@@ -45,6 +45,32 @@ module "wordpress_web_master" {
   efs_dns          = module.efs.efs_dns
 }
 
+module "alb" {
+  depends_on = [module.security_groups]
+  source     = "./modules/alb"
+
+  name           = var.alb_name
+  vpc_id         = module.vpc.vpc_id
+  public_subnets = module.vpc.public_subnets
+  alb_sg         = module.security_groups.alb_sg
+}
+
+module "autoscaling" {
+  depends_on = [module.alb]
+  source     = "./modules/autoscaling"
+
+  name             = var.asg_name
+  ami_id           = var.ami_id
+  private_subnets  = module.vpc.private_app_subnets
+  instance_type    = var.instance_type
+  web_sg           = module.security_groups.sg_web_public
+  target_group_arn = module.alb.target_group_arn
+  user_data        = file("${path.module}/scripts/user_data.sh")
+}
+
+module "cloudfront" {
+  source  = "./modules/cloudfront"
+  alb_dns = module.alb.alb_dns
 module "rds_aurora" {
   depends_on              = [module.vpc, module.security_groups]
   source                  = "./modules/rds-aurora"

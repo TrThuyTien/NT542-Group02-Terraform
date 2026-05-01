@@ -32,6 +32,17 @@ variable "ami_id" {
   default     = "ami-04680790a315cd58d"
 }
 
+variable "alb_name" {
+  default = "wordpress-alb"
+}
+
+variable "asg_name" {
+  default = "wordpress-asg"
+}
+
+variable "instance_type" {
+  description = "EC2 instance type"
+  type        = string
 variable "db_name" {
   description = "Tên database"
   type        = string
