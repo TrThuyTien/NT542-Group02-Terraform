@@ -1,5 +1,7 @@
 # NT542-Group02-Terraform
+## Kiến trúc hệ thống
 
+![Architecture Diagram](docs/[NT542]%20Architecture%20diagram%20terraform.png)
 ## 📂 Cấu trúc thư mục
 
 ```bash
